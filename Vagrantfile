@@ -18,12 +18,12 @@ Vagrant.configure('2') do |config|
     end
 
     # Assign additional cores to the guest OS.
-    v.customize ["modifyvm", :id, "--cpus", cpu_count]
-    v.customize ["modifyvm", :id, "--ioapic", "on"]
+    vb.customize ["modifyvm", :id, "--cpus", cpu_count]
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
 
     # This setting makes it so that network access from inside the vagrant guest
     # is able to resolve DNS using the hosts VPN connection.
-    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
   config.vm.network :private_network, type: 'dhcp'
@@ -36,6 +36,8 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ['chef/cookbooks']
+    chef.add_recipe "rbenv::user"
+    chef.add_recipe "rbenv::vagrant"
     chef.add_recipe 'recipe[kickinespresso]'
     chef.add_recipe 'recipe[imagemagick]'
   end
