@@ -40,7 +40,7 @@ package 'ruby2.2'
 package 'ruby2.2-dev'
 
 #
-# Install Bundler, build it against the newly installed 2.1 gem binary
+# Install Bundler, build it against the newly installed 2.2 gem binary
 #
 gem_package 'bundler' do
   gem_binary('/usr/bin/gem2.2')
