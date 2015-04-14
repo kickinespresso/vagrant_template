@@ -29,7 +29,7 @@ Vagrant.configure('2') do |config|
   config.vm.network :private_network, type: 'dhcp'
   config.vm.network :forwarded_port, guest: 3000, host: 4000
   config.vm.network :forwarded_port, guest: 1080, host: 4080 # Mailcatcher
-  config.vm.synced_folder './code', '/home/vagrant/code', nfs: true
+  
   nfs_setting = RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /linux/
   config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :nfs => nfs_setting
 
