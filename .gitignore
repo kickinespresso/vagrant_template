@@ -1,0 +1,16 @@
+/.vagrant
+/.vagrantfile
+.DS_Store
+._.DS_Store
+/tmp
+/logfile
+log/
+.idea
+# temp directory for chef (used to configure vagrant VM)
+chef/tmp/*
+
+# .procfile
+.procfile
+
+# .env, local environment variables for use with foreman
+.env
